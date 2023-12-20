@@ -1,0 +1,9 @@
+{
+    "description":"create from repository template",
+    "key":"${project}-${repository}-${environment}",
+    "packageType":"nuget",
+    "rclass":"local",
+    "repoLayoutRef":"nuget-default",
+    "projectKey":"${project}",
+    "environments": "${environment}"
+}

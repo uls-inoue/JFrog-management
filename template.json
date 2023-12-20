@@ -1,0 +1,9 @@
+{
+    "description":"create from repository template",
+    "key":"${project}-${repository}-${environment}",
+    "packageType":"generic",
+    "rclass":"local",
+    "repoLayoutRef":"simple-default",
+    "projectKey":"${project}",
+    "environments": "${environment}"
+}
