@@ -20,7 +20,7 @@ pipeline {
     stage("UploadToJFrog"){
       steps{
         script {
-          echo "test"
+          jf '--version'
           // todo
           // ・ReleaseDateを外部から指定できるようにする
           // ・リリース先環境名を外部から指定できるようにする
