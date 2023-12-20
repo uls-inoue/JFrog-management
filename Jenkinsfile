@@ -15,9 +15,9 @@ pipeline {
     stage("CreateJFrogRespository"){
       steps{
         script {
-          def TARGET_ENV = ${params.TARGET_ENV}tokenize('\n')
+          def TARGET_ENV = ${params.TARGET_ENV}.tokenize('\n')
           for (def TARGET in TARGET_ENV){
-            echo "${TARGET}"
+            echo '${TARGET}'
           }
           // jf 'rt repo-create template.json --vars="project=kabucom-devel;repository=${params.REPOSITORY_KEY};environment=${ENV}"'
         }
