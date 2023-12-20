@@ -15,17 +15,16 @@ pipeline {
     stage("CreateJFrogRespository"){
       steps{
         script {
-          def TARGET_ENV = "${params.TARGET_ENV}".split('\n')
           echo "${params.REPOSITORY_KEY}"
-          echo "${TARGET_ENV}"
-          for (i in "${TARGET_ENV}"){
-            echo "${i}"
-          }
-                    // for (i = 0; i < "${TARGET_ENV}.length"; i++ ){
-          //   echo "${TARGET[i]}"
+          // echo "${TARGET_ENV}"
+          // def TARGET_ENV = "${params.TARGET_ENV}".tokenize('\n')
+          // for (i in "${TARGET_ENV}"){
+          //   echo "${i}"
           // }
-          echo "${TARGET_ENV[0]}"
-          // jf 'rt repo-create template.json --vars="project=kabucom-devel;repository=${params.REPOSITORY_KEY};environment=${ENV}"'
+          // echo "${TARGET_ENV[0]}"
+          jf 'rt repo-create template.json --vars="project=kabucom-devel;repository=${params.REPOSITORY_KEY};environment=ENV-Prod"'
+          jf 'rt repo-create template.json --vars="project=kabucom-devel;repository=${params.REPOSITORY_KEY};environment=ENV-ST"'
+          jf 'rt repo-create template.json --vars="project=kabucom-devel;repository=${params.REPOSITORY_KEY};environment=ENV-Dev2"'
         }
       }
     }
