@@ -16,12 +16,11 @@ pipeline {
       steps{
         script {
           def TARGET_ENV = "${params.TARGET_ENV}".tokenize('\n')
-          def length = "${TARGET_ENV}.length"
           echo "${params.REPOSITORY_KEY}"
           echo "${TARGET_ENV}"
-          // for (int i = 0; i < "${TARGET_ENV}".length; i++ ){
-          //   echo "${TARGET[i]}"
-          // }
+          for (int i = 0; i < "${TARGET_ENV}.length"; i++ ){
+            echo "${TARGET[i]}"
+          }
           echo "${TARGET_ENV[0]}"
           // jf 'rt repo-create template.json --vars="project=kabucom-devel;repository=${params.REPOSITORY_KEY};environment=${ENV}"'
         }
