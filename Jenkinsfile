@@ -15,12 +15,12 @@ pipeline {
     stage("CreateJFrogRespository"){
       steps{
         script {
-          // def TARGET_ENV = '${params.TARGET_ENV}.tokenize('\n')'
+          def TARGET_ENV = '${params.TARGET_ENV}.tokenize('\n')'
           echo "${params.REPOSITORY_KEY}"
-          // echo ${TARGET_ENV}
-          // for (def TARGET in TARGET_ENV){
-          //   echo '${TARGET}'
-          // }
+          echo "${TARGET_ENV}"
+          for (def TARGET in "${TARGET_ENV}"){
+            echo '${TARGET}'
+          }
           // jf 'rt repo-create template.json --vars="project=kabucom-devel;repository=${params.REPOSITORY_KEY};environment=${ENV}"'
         }
       }
