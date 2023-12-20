@@ -18,7 +18,7 @@ pipeline {
           def TARGET_ENV = "${params.TARGET_ENV}".tokenize('\n')
           echo "${params.REPOSITORY_KEY}"
           echo "${TARGET_ENV}"
-          for (i in "${TARGET_ENV}"){
+          for (i in "${params.TARGET_ENV}"){
             echo "${i}"
           }
                     // for (i = 0; i < "${TARGET_ENV}.length"; i++ ){
