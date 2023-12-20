@@ -22,9 +22,9 @@ pipeline {
           //   echo "${i}"
           // }
           // echo "${TARGET_ENV[0]}"
-          jf "rt repo-create template.json --vars=project=kabucom-devel;repository=${params.REPOSITORY_KEY};environment=ENV-Prod"
-          jf "rt repo-create template.json --vars=project=kabucom-devel;repository=${params.REPOSITORY_KEY};environment=ENV-ST"
-          jf "rt repo-create template.json --vars=project=kabucom-devel;repository=${params.REPOSITORY_KEY};environment=ENV-Dev2"
+          jf "rt repo-create template.json --vars=project=${params.PROJECT_KEY};repository=${params.REPOSITORY_KEY};environment=ENV-Prod"
+          jf "rt repo-create template.json --vars=project=${params.PROJECT_KEY};repository=${params.REPOSITORY_KEY};environment=ENV-ST"
+          jf "rt repo-create template.json --vars=project=${params.PROJECT_KEY};repository=${params.REPOSITORY_KEY};environment=ENV-Dev2"
         }
       }
     }
