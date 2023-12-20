@@ -1,0 +1,24 @@
+pipeline {
+  // todo agentをカブコム環境にあわせwindowsを指定するようにする
+  agent any
+  environment {
+    LogLevel = 'normal'
+  }
+  tools {
+    jfrog 'jfrog-cli'
+  }
+  options {
+    // numToKeepStr: ビルドログを残す個数、artifactNumToKeepStr: ビルド成果物を残す個数
+    buildDiscarder(logRotator(numToKeepStr: '50', artifactNumToKeepStr: '10'))
+  }
+  stages {
+    stage("CreateJFrogRespository"){
+      steps{
+        script {
+          echo "${params.REPOSITORY_NAME}"
+          jf "rt repo-delete --quiet ${params.REPOSITORY_NAME}"
+        }
+      }
+    }
+  }
+}
