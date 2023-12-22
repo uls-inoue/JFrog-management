@@ -1,30 +1,14 @@
 pipeline {
-  // todo agentをカブコム環境にあわせwindowsを指定するようにする
   agent any
-  environment {
-    LogLevel = 'normal'
-  }
-  tools {
-    jfrog 'jfrog-cli'
-  }
-  options {
-    // numToKeepStr: ビルドログを残す個数、artifactNumToKeepStr: ビルド成果物を残す個数
-    buildDiscarder(logRotator(numToKeepStr: '50', artifactNumToKeepStr: '10'))
+  triggers {
+    // Gitのタグ作成をトリガーに設定する
+    git(tag: true)
   }
   stages {
-    stage("CreateJFrogRespository"){
+    stage("test"){
       steps{
         script {
-          echo "${params.REPOSITORY_KEY}"
-          // echo "${TARGET_ENV}"
-          // def TARGET_ENV = "${params.TARGET_ENV}".tokenize('\n')
-          // for (i in "${TARGET_ENV}"){
-          //   echo "${i}"
-          // }
-          // echo "${TARGET_ENV[0]}"
-          jf "rt repo-create template.json --vars=project=${params.PROJECT_KEY};repository=${params.REPOSITORY_KEY};environment=ENV-Prod"
-          jf "rt repo-create template.json --vars=project=${params.PROJECT_KEY};repository=${params.REPOSITORY_KEY};environment=ENV-ST"
-          jf "rt repo-create template.json --vars=project=${params.PROJECT_KEY};repository=${params.REPOSITORY_KEY};environment=ENV-Dev2"
+          echo "${env.CHANGE_TARGET}"
         }
       }
     }
